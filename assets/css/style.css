@@ -1,0 +1,227 @@
+/* Variables de colores */
+:root {
+    --primary-color: #4CAF50; /* Verde */
+    --secondary-color: #f44336; /* Rojo */
+    --background-color: #f4f4f4; /* Fondo claro */
+    --text-color: #333; /* Color de texto oscuro */
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; /* Espaciado interno para evitar recortes */
+}
+
+/* Contenedor de formularios */
+.register-container, .login-container, .auth-container, .container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    margin: auto; /* Centrar el contenedor */
+}
+
+/* Asegurar que el contenido esté centrado */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Encabezados */
+h1, h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Descripciones */
+.description {
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+/* Entradas de formulario */
+input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="number"], textarea, select {
+    width: calc(100% - 20px); /* Dejar margen interno */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: left;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Botones */
+button, .btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: calc(100% - 20px); /* Dejar margen interno */
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover, .btn:hover {
+    background-color: #45a049;
+}
+
+.btn-danger {
+    background-color: var(--secondary-color);
+}
+
+.btn-danger:hover {
+    background-color: #e31e1e;
+}
+
+.btn-secondary {
+    background-color: #008CBA;
+}
+
+.btn-secondary:hover {
+    background-color: #007BB5;
+}
+
+/* Enlaces */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para alertas */
+.disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.btn.disabled:hover {
+    background-color: grey;
+}
+
+/* Contenedor de botones de módulos */
+.module-buttons, .actions, .reports, .form-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Tablas */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: 'Arial', sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    table-layout: auto; /* Cambiar para ajustar celdas automáticamente */
+}
+
+.styled-table thead tr {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-align: left;
+}
+
+/* Ajustes de márgenes para las celdas de la tabla */
+.styled-table th, .styled-table td {
+    padding: 12px;
+    text-align: left;
+    box-sizing: border-box;
+    overflow-wrap: break-word; /* Evitar que el texto se salga de las celdas */
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.no-data {
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#successMessage, #errorMessage {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+#successMessage {
+    background-color: #28a745;
+}
+
+#errorMessage {
+    background-color: #dc3545;
+}
+

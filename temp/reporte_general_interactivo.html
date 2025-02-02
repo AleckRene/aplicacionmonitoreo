@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Interactivo</title>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        color: #333;
+    }
+    h1, h2 {
+        color: #007BFF;
+        text-align: center;
+    }
+    .chart-container {
+        width: 100%;
+        height: 400px;
+        margin: 20px auto;
+    }
+        .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 10px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Reporte General Interactivo</h1>
+    <div class="chart-container"><canvas id="indicadoresUsoChart"></canvas></div>
+    <div class="chart-container"><canvas id="participacionChart"></canvas></div>
+    <div class="chart-container"><canvas id="eventosChart"></canvas></div>
+    <div class="chart-container"><canvas id="necesidadesChart"></canvas></div>
+
+    <script>
+    // Datos para los gráficos
+    const indicadoresUsoData = {"nivel_actividad":{"Alto":1,"Bajo":2,"Moderadamente alto":1,"Moderadamente bajo":1,"Moderado":1},"frecuencia_recomendaciones":{"Frecuente":2,"Muy frecuente":1,"Ocasionalmente":1,"Raramente":2},"calidad_uso":{"Aceptable":1,"Buena":1,"Deficiente":2,"Excelente":1,"Muy buena":1}};
+    const participacionData = {"nivel_participacion":{"0":3,"1":1,"Nada activa":1},"grupos_comprometidos":{"Juntas comunitarias":4,"L\u00edderes locales":1},"estrategias_mejora":{"Capacitaciones":4,"Reuniones peri\u00f3dicas":1}};
+    const eventosData = {"nombre_evento":{"Campa\u00f1a de sensibilizaci\u00f3n":1,"Vacunaci\u00f3n comunitaria":1},"descripcion":{"Moderado":2},"acciones":{"Distribuci\u00f3n de materiales":1,"Vacunaci\u00f3n":1}};
+    const necesidadesData = {"descripcion":{"Falta de recursos m\u00e9dicos":2,"Infraestructura da\u00f1ada":1},"acciones":{"Gesti\u00f3n de recursos externos":2,"Reuni\u00f3n comunitaria":1},"area_prioritaria":{"Educaci\u00f3n":1,"Salud":2}};
+
+    function generateChart(ctx, data, title) {
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: Object.keys(data),
+                datasets: [{
+                    label: "Frecuencia",
+                    data: Object.values(data),
+                    backgroundColor: "rgba(54, 162, 235, 0.5)",
+                    borderColor: "rgba(54, 162, 235, 1)",
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: title
+                    }
+                }
+            }
+        });
+    }
+
+    window.onload = function() {
+        generateChart(document.getElementById("indicadoresUsoChart"), indicadoresUsoData, "Indicadores de Uso");
+        generateChart(document.getElementById("participacionChart"), participacionData, "Participación Comunitaria");
+        generateChart(document.getElementById("eventosChart"), eventosData, "Eventos de Salud");
+        generateChart(document.getElementById("necesidadesChart"), necesidadesData, "Necesidades Comunitarias");
+    };
+    </script>
+</body>
+</html>

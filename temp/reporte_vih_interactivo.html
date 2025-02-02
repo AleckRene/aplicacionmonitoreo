@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte VIH Interactivo</title>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        color: #333;
+    }
+    h1, h2 {
+        text-align: center;
+        color: #007BFF;
+    }
+    .chart-container {
+        width: 100%;
+        height: 400px;
+        margin: 20px auto;
+    }
+</style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Reporte VIH Interactivo</h1>
+    <div class="chart-container"><canvas id="accesibilidadChart"></canvas></div>
+    <div class="chart-container"><canvas id="percepcionChart"></canvas></div>
+
+    <script>
+        const accesibilidadData = {"accesibilidad_servicios":{"Nada accesibles":1},"actitud_personal":{"Inapropiada":1},"tarifas_ocultas":{"Ocasionalmente":1},"factores_mejora":{"Aumentar disponibilidad de medicamentos":1},"disponibilidad_herramientas":{"Regular":1}};
+        const percepcionData = {"calidad_servicio":{"Mala":8,"Muy buena":3,"Muy mala":6},"servicios_mejorar":{"Atenci\u00f3n al cliente":10,"Disponibilidad de recursos":1,"Infraestructura":1,"Otros":1,"Tiempos de espera":4},"cambios_recientes":{"Actualizaci\u00f3n de infraestructura":2,"Mayor disponibilidad de recursos":1,"Mejoras en atenci\u00f3n":1,"No se han observado cambios":7,"Reducci\u00f3n de tiempos de espera":6}};
+
+        function generateChart(ctx, data, title) {
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: Object.keys(data),
+                    datasets: [{
+                        label: "Frecuencia",
+                        data: Object.values(data),
+                        backgroundColor: "rgba(75, 192, 192, 0.6)",
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: title
+                        }
+                    }
+                }
+            });
+        }
+
+        window.onload = function() {
+            generateChart(document.getElementById("accesibilidadChart"), accesibilidadData, "Accesibilidad y Calidad");
+            generateChart(document.getElementById("percepcionChart"), percepcionData, "Percepción de Servicios");
+        };
+    </script>
+</body>
+</html>
